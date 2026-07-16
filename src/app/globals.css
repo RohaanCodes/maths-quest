@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+
+@theme {
+  --font-sans: "Nunito Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "Quicksand", system-ui, -apple-system, sans-serif;
+
+  --color-surface-container-low: #eff4ff;
+  --color-on-secondary: #ffffff;
+  --color-outline-variant: #c2c6d6;
+  --color-on-error-container: #93000a;
+  --color-inverse-on-surface: #eaf1ff;
+  --color-background: #f8f9ff;
+  --color-inverse-primary: #adc6ff;
+  --color-surface-variant: #d3e4fe;
+  --color-secondary-fixed-dim: #4edea3;
+  --color-inverse-surface: #213145;
+  --color-on-primary-fixed-variant: #004395;
+  --color-surface-dim: #cbdbf5;
+  --color-on-background: #0b1c30;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-highest: #d3e4fe;
+  --color-tertiary-fixed: #ffddb8;
+  --color-tertiary: #825100;
+  --color-surface-tint: #005ac2;
+  --color-error: #ba1a1a;
+  --color-on-secondary-container: #00714d;
+  --color-on-secondary-fixed: #002113;
+  --color-secondary-fixed: #6ffbbe;
+  --color-error-container: #ffdad6;
+  --color-on-tertiary-fixed-variant: #653e00;
+  --color-primary: #0058be;
+  --color-on-surface: #0b1c30;
+  --color-primary-fixed: #d8e2ff;
+  --color-on-tertiary: #ffffff;
+  --color-on-primary: #ffffff;
+  --color-secondary-container: #6cf8bb;
+  --color-surface: #f8f9ff;
+  --color-surface-bright: #f8f9ff;
+  --color-tertiary-fixed-dim: #ffb95f;
+  --color-surface-container-high: #dce9ff;
+  --color-tertiary-container: #a36700;
+  --color-on-secondary-fixed-variant: #005236;
+  --color-primary-container: #2170e4;
+  --color-surface-container: #e5eeff;
+  --color-on-error: #ffffff;
+  --color-primary-fixed-dim: #adc6ff;
+  --color-secondary: #006c49;
+  --color-on-tertiary-container: #fffbff;
+  --color-outline: #727785;
+  --color-on-primary-fixed: #001a42;
+  --color-on-surface-variant: #424754;
+  --color-on-tertiary-fixed: #2a1700;
+  --color-on-primary-container: #fefcff;
+
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-glint: glint 3s infinite linear;
+  --animate-pulse-slow: pulse-slow 3s infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes glint {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.08); }
+}
+
+/* Custom design components and visual polish */
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-background);
+  color: var(--color-on-background);
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+}
+
+/* Custom 3D Pressed Buttons */
+.btn-3d {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 0 0 #004395;
+}
+.btn-3d:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 0 #004395;
+}
+
+.btn-3d-secondary {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 0 0 #005236;
+}
+.btn-3d-secondary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 0 #005236;
+}
+
+.btn-3d-tertiary {
+  position: relative;
+  transition: all 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 0 0 #653e00;
+}
+.btn-3d-tertiary:active {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 0 #653e00;
+}
+
+.input-magical {
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.input-magical:focus {
+  transform: scale(1.01);
+  outline: none;
+}
+
+.card-island {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 2px solid #d3e4fe;
+  box-shadow: 0 8px 32px rgba(0, 88, 190, 0.05);
+  border-bottom-width: 4px;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  vertical-align: middle;
+}
+
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+.animate-shake {
+  animation: shake 0.2s ease-in-out 0s 2;
+}
+
+/* Confetti animation */
+@keyframes confetti-fall {
+  0% { transform: translateY(-10vh) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+.animate-confetti {
+  animation: confetti-fall 4s linear forwards;
+}

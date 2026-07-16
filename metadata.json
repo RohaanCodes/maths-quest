@@ -1,0 +1,6 @@
+{
+  "name": "Math Quest",
+  "description": "An interactive fantasy mathematics adventure game for practicing algebra and operations with step-by-step wizard guidance.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
