@@ -1,4 +1,10 @@
-import { World, Challenge, Student, StudentProgress, Badge } from '../types';
+import {
+  World,
+  Challenge,
+  Student,
+  StudentProgress,
+  Badge,
+} from '../types';
 
 export const MOCK_STUDENT: Student = {
   id: 'student-1',
@@ -8,7 +14,7 @@ export const MOCK_STUDENT: Student = {
   xp: 2450,
   tokens: 85,
   level: 12,
-  avatarUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBCHLv4oq2YyLejtjL0apPZJ5y9kdrL1IcIQ_OrgAu_d42GmBTmv1LagY34aT-15wXcq2oE5_ffStavc5KMz0p3tB9YnJxmAgxVa1ieud0-5o5FrSfczIhB1nDvwyEJUQqfSFY2DQyU_1Pr57KoSun2c_Cx_n7TSYIA3Hw4dPjZUKBtS8VtHBkytdYxqxOe5DGO-HzdV3ZaJ7i17wXKdlEsQaWx8AXeXeLJvUbfj1E7emPGYgH8CEyy',
+  avatarUrl: '/avatars/default.webp',
 };
 
 export const MOCK_BADGES: Badge[] = [
@@ -16,29 +22,38 @@ export const MOCK_BADGES: Badge[] = [
     id: 'badge-addition-ace',
     name: 'Addition Ace',
     description: 'Mastered 50 sums!',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDxKS6th8XccGlT8Iscop6L3AhsMOSAMNyfrGDKR9CU-Selv7wlGWJLVHt8rYrDcY2V95n7Ef8mlBkG0En7yWg2M11O6HJEHMDowcL2x8fPx_6oPaVHvYnH__1vRDk0oBL8fOzb6p9S7DjAZdTIUE7bgGGOOCNtJ7qFRytM6Le7r9vpjAhfZRKk_RLdnr4BCzDSQdtKgRgKBBaQbU4CaTxNsU_wWuEu9wF7a0V4CipHDJMqqomNyse8',
-    type: 'gold'
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDxKS6th8XccGlT8Iscop6L3AhsMOSAMNyfrGDKR9CU-Selv7wlGWJLVHt8rYrDcY2V95n7Ef8mlBkG0En7yWg2M11O6HJEHMDowcL2x8fPx_6oPaVHvYnH__1vRDk0oBL8fOzb6p9S7DjAZdTIUE7bgGGOOCNtJ7qFRytM6Le7r9vpjAhfZRKk_RLdnr4BCzDSQdtKgRgKBBaQbU4CaTxNsU_wWuEu9wF7a0V4CipHDJMqqomNyse8',
+    type: 'gold',
   },
   {
     id: 'badge-speed-runner',
     name: 'Speed Runner',
     description: '30 Correct in 2 mins',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDBGhIpYrvz-G6fJXYyQKg-od4vPTrNDKYCeW5zrC6yok9tdNEHjqn5OKlST_mkP5XlCwyRVGiseQV52tpgDGSCzQABuMoevCsMy2QlnDXQfRYKg6Ehk5Dz5KoITTPDddqTWtkyFziX1d7e7sDdpWBJ-nCg788qZpqb_BkOvnSWxCviU9I4elj0GAa0Qg5ywonrHtv5I5APirLUEBJFybU1jonrCenrDjqieWB2eEkd95ksvAu4-b0W',
-    type: 'silver'
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuDBGhIpYrvz-G6fJXYyQKg-od4vPTrNDKYCeW5zrC6yok9tdNEHjqn5OKlST_mkP5XlCwyRVGiseQV52tpgDGSCzQABuMoevCsMy2QlnDXQfRYKg6Ehk5Dz5KoITTPDddqTWtkyFziX1d7e7sDdpWBJ-nCg788qZpqb_BkOvnSWxCviU9I4elj0GAa0Qg5ywonrHtv5I5APirLUEBJFybU1jonrCenrDjqieWB2eEkd95ksvAu4-b0W',
+    type: 'silver',
   },
   {
     id: 'badge-gem-hunter',
     name: 'Gem Hunter',
     description: 'Found 10 hidden secrets',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBkycYofVeZ3_ZAo7vCUP2G_IuAF9xxmrsO0n6eYVlyKSrgZMWv2z4Pd_TfLaL74D8I6gbVqSPVJXojmz3CQadUvfZ4UTYNDhp9PCUz2saBzyAtHU7cIyU--XeSXqPvp4O2nMHdKb50WCL8euNFgB_-qKIvdMGqOEjYh9LuVIlNsokMtnUXNB7aMIIEIPNOtIhtzgpSeo7UpkGevuX56YMKrUKFW8f5zBxKnbSCELB22YT3GzHTE60N',
-    type: 'bronze'
-  }
+    image:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBkycYofVeZ3_ZAo7vCUP2G_IuAF9xxmrsO0n6eYVlyKSrgZMWv2z4Pd_TfLaL74D8I6gbVqSPVJXojmz3CQadUvfZ4UTYNDhp9PCUz2saBzyAtHU7cIyU--XeSXqPvp4O2nMHdKb50WCL8euNFgB_-qKIvdMGqOEjYh9LuVIlNsokMtnUXNB7aMIIEIPNOtIhtzgpSeo7UpkGevuX56YMKrUKFW8f5zBxKnbSCELB22YT3GzHTE60N',
+    type: 'bronze',
+  },
 ];
 
 export const MOCK_STUDENT_PROGRESS: StudentProgress = {
   studentId: 'student-1',
-  completedChallengeIds: ['addition-forest', 'subtraction-springs'],
-  unlockedWorldIds: ['world-operations', 'world-fractions'],
+  completedChallengeIds: [
+    'addition-forest',
+    'subtraction-springs',
+  ],
+  unlockedWorldIds: [
+    'world-operations',
+    'world-fractions',
+  ],
   activeStreak: 5,
   dailyGoalProgress: 4,
   dailyGoalMax: 5,
@@ -49,11 +64,13 @@ export const MOCK_WORLDS: World[] = [
   {
     id: 'world-operations',
     name: 'Kingdom of Operations',
-    description: 'Master equations and order of operations to solve ancient castle mysteries.',
+    description:
+      'Master equations and order of operations to solve ancient castle mysteries.',
     domain: 'operations',
     status: 'current',
     completionPercentage: 85,
-    bannerUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAHMKj5zBFlQaUdrAiDjdOLW1j37reKdWaWGyhprWGDbIBHFmo9qywx-0hBf1kKdGmhSiOQnIxituFi2MwA5KHCVddsJwS4SjDw8j9VrRGJsQ9UIRKb1cVz5SlFsauH2WkNBLymQoqTu78NUy7iZfSLEBMYsXK3e9SkCKV69__BtYPoChPwhx8swTL1-0J_BskwSy6ySyQR4_tbnKTpf9EUouiUUazfhNFbp7Q0igTn37uHylQpPwIL',
+    bannerUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuAHMKj5zBFlQaUdrAiDjdOLW1j37reKdWaWGyhprWGDbIBHFmo9qywx-0hBf1kKdGmhSiOQnIxituFi2MwA5KHCVddsJwS4SjDw8j9VrRGJsQ9UIRKb1cVz5SlFsauH2WkNBLymQoqTu78NUy7iZfSLEBMYsXK3e9SkCKV69__BtYPoChPwhx8swTL1-0J_BskwSy6ySyQR4_tbnKTpf9EUouiUUazfhNFbp7Q0igTn37uHylQpPwIL',
     region: 'Region 1: The Grasslands',
     currentQuestName: 'The Golden Equation',
     currentQuestId: 'challenge-golden-equation',
@@ -61,22 +78,26 @@ export const MOCK_WORLDS: World[] = [
   {
     id: 'world-fractions',
     name: 'Fraction Valley',
-    description: 'Carve up slices of magical elements to restore balance to the valley.',
+    description:
+      'Carve up slices of magical elements to restore balance to the valley.',
     domain: 'fractions',
     status: 'completed',
     completionPercentage: 100,
-    bannerUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA9awSXO61y9GdaWSe-kdtNfWDytHqjALfE-txVFUm3Dw2UsxeNF2vUa973ptMY2k-RSU2Xr9Gg7fKfUz1ljDLV8uRuLFduAWR8JMAXda_Cjf5PnxKfH37Cl_bLTOoTvxClED4yylAV2MgMpCawi4dr-Numphk8cjvyWVVv6UVqAQEHVP0_GK631Lu10eDag_5xOptR9-FsXgN9swIp3EXO8inXGS99n6WlzbG3fUgeCzbtwPpamosj',
+    bannerUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuA9awSXO61y9GdaWSe-kdtNfWDytHqjALfE-txVFUm3Dw2UsxeNF2vUa973ptMY2k-RSU2Xr9Gg7fKfUz1ljDLV8uRuLFduAWR8JMAXda_Cjf5PnxKfH37Cl_bLTOoTvxClED4yylAV2MgMpCawi4dr-Numphk8cjvyWVVv6UVqAQEHVP0_GK631Lu10eDag_5xOptR9-FsXgN9swIp3EXO8inXGS99n6WlzbG3fUgeCzbtwPpamosj',
     region: 'Region 2: River Crossing',
     currentQuestName: 'None',
   },
   {
     id: 'world-decimals',
     name: 'Decimal Peaks',
-    description: 'Scale precise mountain heights with decimals and place values.',
+    description:
+      'Scale precise mountain heights with decimals and place values.',
     domain: 'decimals',
     status: 'locked',
     completionPercentage: 0,
-    bannerUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBYCqjLhTTs0e0U4okTqtsHBDkIHcRO7fxi0V2Q8F8oGbfnlyz0KT0bVq1T2chiEfhvrn4F6J_6kcF8uvkbutl165Wg--juedwpCx1hlBYKSth20IEiQjTkpdNyDKRPDCO3nH6bH0DPdSTFYo84luYY_qI2iakOVyxoUIP2wwhBrDEToL4mtpqLormC5U_W6Rkcg58ClTnA7CB7OmG7WJW_EXWY0YTHqwBHSK6A6bRg2cznv3SY2JVD',
+    bannerUrl:
+      'https://lh3.googleusercontent.com/aida-public/AB6AXuBYCqjLhTTs0e0U4okTqtsHBDkIHcRO7fxi0V2Q8F8oGbfnlyz0KT0bVq1T2chiEfhvrn4F6J_6kcF8uvkbutl165Wg--juedwpCx1hlBYKSth20IEiQjTkpdNyDKRPDCO3nH6bH0DPdSTFYo84luYY_qI2iakOVyxoUIP2wwhBrDEToL4mtpqLormC5U_W6Rkcg58ClTnA7CB7OmG7WJW_EXWY0YTHqwBHSK6A6bRg2cznv3SY2JVD',
     region: 'Region 3: High Summits',
   },
 ];
@@ -86,7 +107,8 @@ export const MOCK_CHALLENGES: Challenge[] = [
     id: 'addition-forest',
     name: 'Addition Forest',
     worldId: 'world-operations',
-    description: 'Learn to combine numeric variables under the dense canopy.',
+    description:
+      'Learn to combine numeric variables under the dense canopy.',
     difficulty: 'Beginner',
     estimatedTime: '5 Mins',
     status: 'completed',
@@ -100,13 +122,16 @@ export const MOCK_CHALLENGES: Challenge[] = [
     id: 'subtraction-springs',
     name: 'Subtraction Springs',
     worldId: 'world-operations',
-    description: 'Subtract equations to balance the magical floating spring levels.',
+    description:
+      'Subtract equations to balance the magical floating spring levels.',
     difficulty: 'Apprentice',
     estimatedTime: '10 Mins',
     status: 'completed',
     xpReward: 300,
     bonusXp: 12,
-    requirements: ['Master Level: Addition Forest'],
+    requirements: [
+      'Master Level: Addition Forest',
+    ],
     steps: [],
     questions: [],
   },
@@ -114,7 +139,8 @@ export const MOCK_CHALLENGES: Challenge[] = [
     id: 'challenge-golden-equation',
     name: 'The Golden Equation',
     worldId: 'world-operations',
-    description: "The Kingdom's vault is locked by a mysterious cipher. Solve the golden equations to unlock the treasure!",
+    description:
+      "The Kingdom's vault is locked by a mysterious cipher. Solve the golden equations to unlock the treasure!",
     difficulty: 'Heroic',
     estimatedTime: '15 Mins',
     status: 'current',
@@ -123,103 +149,151 @@ export const MOCK_CHALLENGES: Challenge[] = [
     badge: {
       name: 'Vault Breaker Emblem',
       icon: 'lock_open',
-      description: 'Awarded for unlocking the ancient operations vault.',
+      description:
+        'Awarded for unlocking the ancient operations vault.',
     },
-    requirements: ['Master Level: Algebra I', '3 Magic Keys (Earned)'],
+    requirements: [
+      'Master Level: Algebra I',
+      '3 Magic Keys (Earned)',
+    ],
     steps: [
       {
         id: 'step-intro',
         type: 'intro',
         title: 'The Vault Awaits',
-        content: 'Welcome to the royal vault of the Kingdom of Operations! Before you lies the heavy golden door. To unlock it, you must understand the balance of equations, and solve for the unknown variable: **X**.',
-        wizardText: 'Aha! The golden equation holds the key to the vault. Are you ready to solve the mystery of X?',
+        content:
+          'Welcome to the royal vault of the Kingdom of Operations! Before you lies the heavy golden door. To unlock it, you must understand the balance of equations, and solve for the unknown variable: **X**.',
+        wizardText:
+          'Aha! The golden equation holds the key to the vault. Are you ready to solve the mystery of X?',
         wizardMood: 'excited',
       },
       {
         id: 'step-learn',
         type: 'learn',
-        title: 'Understand the Equation Scale',
-        content: 'An equation is like a perfect balance scale. The left side and the right side must always have exactly the same value. \n\nIf you have `2x + 5 = 15`, it means that twice some mystery number `x`, plus `5` more, perfectly balances out the number `15` on the other side.',
-        wizardText: 'Think of the "=" sign as the middle of a perfect balancing scale! Keep it balanced at all costs!',
+        title:
+          'Understand the Equation Scale',
+        content:
+          'An equation is like a perfect balance scale. The left side and the right side must always have exactly the same value. \n\nIf you have `2x + 5 = 15`, it means that twice some mystery number `x`, plus `5` more, perfectly balances out the number `15` on the other side.',
+        wizardText:
+          'Think of the "=" sign as the middle of a perfect balancing scale! Keep it balanced at all costs!',
         wizardMood: 'teaching',
       },
       {
         id: 'step-example',
         type: 'example',
-        title: 'Worked Example: Solving for X',
-        content: 'Let us solve `2x + 5 = 15` step-by-step.',
-        wizardText: 'Abracadabra! Watch closely as I untangle this equation. We need to find the value of x to unlock the gate!',
+        title:
+          'Worked Example: Solving for X',
+        content:
+          'Let us solve `2x + 5 = 15` step-by-step.',
+        wizardText:
+          'Abracadabra! Watch closely as I untangle this equation. We need to find the value of x to unlock the gate!',
         wizardMood: 'abracadabra',
         workedExample: {
           steps: [
             {
               number: 1,
               expression: '2x + 5 = 15',
-              explanation: 'First, we need to get the "x" part alone. Let\'s subtract 5 from both sides to peel off that +5.',
+              explanation:
+                'First, we need to get the "x" part alone. Let\'s subtract 5 from both sides to peel off that +5.',
             },
             {
               number: 2,
               expression: '2x = 10',
-              explanation: 'Now we have 2x left. Since 2 times x is 10, we divide both sides by 2 to find x.',
+              explanation:
+                'Now we have 2x left. Since 2 times x is 10, we divide both sides by 2 to find x.',
             },
             {
               number: 3,
               expression: 'x = 5',
-              explanation: 'Hooray! The mystery variable x is equal to 5. The scale remains perfectly balanced!',
+              explanation:
+                'Hooray! The mystery variable x is equal to 5. The scale remains perfectly balanced!',
             },
           ],
-          ahaMoment: 'Great! Now we just need to divide by 2!',
-          ruleOfBalance: 'Whatever you do to one side of the equals sign, you MUST do to the other side!',
-          mentalTrick: 'Ask yourself: "What number times 2 gives me 10?"',
+          ahaMoment:
+            'Great! Now we just need to divide by 2!',
+          ruleOfBalance:
+            'Whatever you do to one side of the equals sign, you MUST do to the other side!',
+          mentalTrick:
+            'Ask yourself: "What number times 2 gives me 10?"',
         },
       },
       {
         id: 'step-video',
         type: 'video',
-        title: 'Teaching Video: Equation Balance',
-        content: 'Watch this short magical video illustrating how variables are solved using balance scales in real life math.',
-        wizardText: 'Watch and learn, young Explorer! Press play to witness mathematical physics in action.',
+        title:
+          'Teaching Video: Equation Balance',
+        content:
+          'Watch this short magical video illustrating how variables are solved using balance scales in real life math.',
+        wizardText:
+          'Watch and learn, young Explorer! Press play to witness mathematical physics in action.',
         wizardMood: 'watching',
-        videoUrl: 'https://www.w3schools.com/html/mov_bbb.mp4', // Safe mock video stream
+        videoUrl:
+          'https://www.w3schools.com/html/mov_bbb.mp4',
       },
       {
         id: 'step-practice',
         type: 'practice',
         title: 'Practice Time!',
-        content: 'Test your understanding! Solve the equations on the right to open the vault. Each correct answer channels energy into the main latch key.',
-        wizardText: 'Now it is your turn to try your spells! Fill in the answers, and let us see if the gate responds!',
+        content:
+          'Test your understanding! Solve the equations on the right to open the vault. Each correct answer channels energy into the main latch key.',
+        wizardText:
+          'Now it is your turn to try your spells! Fill in the answers, and let us see if the gate responds!',
         wizardMood: 'challenging',
       },
     ],
     questions: [
       {
         id: 'q1',
-        challengeId: 'challenge-golden-equation',
-        questionText: 'Solve for x: 3x + 4 = 19',
+        challengeId:
+          'challenge-golden-equation',
+        number: 1,
+        questionText:
+          'Solve for x: 3x + 4 = 19',
         type: 'multiple-choice',
+        difficulty: 'easy',
         options: ['3', '4', '5', '6'],
         correctAnswer: '5',
+        acceptedAnswers: ['5'],
         points: 100,
-        hint: 'Subtract 4 from both sides, then divide by 3.',
+        explanation:
+          'Subtract 4 from both sides to get 3x = 15, then divide both sides by 3. Therefore, x = 5.',
+        hint:
+          'Subtract 4 from both sides, then divide by 3.',
       },
       {
         id: 'q2',
-        challengeId: 'challenge-golden-equation',
-        questionText: 'Solve for y: 4y - 3 = 13',
+        challengeId:
+          'challenge-golden-equation',
+        number: 2,
+        questionText:
+          'Solve for y: 4y - 3 = 13',
         type: 'multiple-choice',
+        difficulty: 'easy',
         options: ['2', '3', '4', '5'],
         correctAnswer: '4',
+        acceptedAnswers: ['4'],
         points: 150,
-        hint: 'Add 3 to both sides to cancel the negative, then divide by 4.',
+        explanation:
+          'Add 3 to both sides to get 4y = 16, then divide both sides by 4. Therefore, y = 4.',
+        hint:
+          'Add 3 to both sides to cancel the negative, then divide by 4.',
       },
       {
         id: 'q3',
-        challengeId: 'challenge-golden-equation',
-        questionText: 'Solve for z: 2z + 8 = 20',
-        type: 'fill-in-blank',
+        challengeId:
+          'challenge-golden-equation',
+        number: 3,
+        questionText:
+          'Solve for z: 2z + 8 = 20',
+        type: 'numeric',
+        difficulty: 'medium',
         correctAnswer: '6',
+        acceptedAnswers: ['6'],
         points: 250,
-        hint: 'Subtract 8 from 20 to get 12, then divide 12 by 2.',
+        explanation:
+          'Subtract 8 from both sides to get 2z = 12, then divide both sides by 2. Therefore, z = 6.',
+        hint:
+          'Subtract 8 from 20 to get 12, then divide 12 by 2.',
       },
     ],
   },
@@ -227,13 +301,16 @@ export const MOCK_CHALLENGES: Challenge[] = [
     id: 'division-dunes',
     name: 'Division Dunes',
     worldId: 'world-operations',
-    description: 'Locked node. Progress in the Kingdom of Operations to unlock.',
+    description:
+      'Locked node. Progress in the Kingdom of Operations to unlock.',
     difficulty: 'Apprentice',
     estimatedTime: '12 Mins',
     status: 'locked',
     xpReward: 400,
     bonusXp: 12,
-    requirements: ['Complete Multiplication Mesa'],
+    requirements: [
+      'Complete Multiplication Mesa',
+    ],
     steps: [],
     questions: [],
   },
@@ -241,13 +318,16 @@ export const MOCK_CHALLENGES: Challenge[] = [
     id: 'order-ops-oasis',
     name: 'Order of Ops Oasis',
     worldId: 'world-operations',
-    description: 'The ultimate boss node in the Kingdom of Operations.',
+    description:
+      'The ultimate boss node in the Kingdom of Operations.',
     difficulty: 'Legendary',
     estimatedTime: '20 Mins',
     status: 'locked',
     xpReward: 600,
     bonusXp: 20,
-    requirements: ['Complete Division Dunes'],
+    requirements: [
+      'Complete Division Dunes',
+    ],
     steps: [],
     questions: [],
   },
