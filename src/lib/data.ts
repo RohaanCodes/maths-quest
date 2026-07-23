@@ -5,6 +5,7 @@ import {
   StudentProgress,
   ExerciseAttempt,
   StudentApiResponse,
+  ExerciseQuestion
 } from '../types';
 
 import {
@@ -29,58 +30,11 @@ export const DEFAULT_DEMO_STUDENT: Student = {
 |--------------------------------------------------------------------------
 */
 
-function initializeLocalStorage(): void {
-  if (typeof window === 'undefined') return;
+ 
 
-  if (!localStorage.getItem('worlds')) {
-    localStorage.setItem('worlds', JSON.stringify(MOCK_WORLDS));
-  }
+ 
 
-  if (!localStorage.getItem('challenges')) {
-    localStorage.setItem(
-      'challenges',
-      JSON.stringify(MOCK_CHALLENGES),
-    );
-  }
-
-  if (!localStorage.getItem('student')) {
-    localStorage.setItem(
-      'student',
-      JSON.stringify(DEFAULT_DEMO_STUDENT),
-    );
-  }
-
-  if (!localStorage.getItem('student_progress')) {
-    localStorage.setItem(
-      'student_progress',
-      JSON.stringify(MOCK_STUDENT_PROGRESS),
-    );
-  }
-}
-
-function getData<T>(key: string, defaultValue: T): T {
-  if (typeof window === 'undefined') {
-    return defaultValue;
-  }
-
-  const item = localStorage.getItem(key);
-
-  if (!item) {
-    return defaultValue;
-  }
-
-  try {
-    return JSON.parse(item) as T;
-  } catch {
-    return defaultValue;
-  }
-}
-
-function setData<T>(key: string, data: T): void {
-  if (typeof window === 'undefined') return;
-
-  localStorage.setItem(key, JSON.stringify(data));
-}
+ 
 
 /*
 |--------------------------------------------------------------------------
@@ -115,7 +69,7 @@ function normalizeWorldId(worldId: string): string {
 */
 
 export async function getWorlds(): Promise<World[]> {
-  initializeLocalStorage();
+  
 
   const progress = await getStudentProgress();
   const completedChallengeIds =
@@ -133,14 +87,11 @@ export async function getWorlds(): Promise<World[]> {
           cache: 'no-store',
         }),
       ]);
-
-    if (!worldsResponse.ok || !challengesResponse.ok) {
-      console.warn(
-        'World or challenge API request failed. Using mock worlds.',
-      );
-
-      return MOCK_WORLDS;
-    }
+if (!worldsResponse.ok || !challengesResponse.ok) {
+  throw new Error(
+    `World API: ${worldsResponse.status}, Challenge API: ${challengesResponse.status}`,
+  );
+}
 
     const rawWorlds =
       (await worldsResponse.json()) as World[];
@@ -197,14 +148,14 @@ export async function getWorlds(): Promise<World[]> {
         currentQuestName: currentChallenge?.name ?? 'None',
       };
     });
-  } catch (error) {
-    console.warn(
-      'Failed to fetch worlds and challenges. Using mock worlds:',
-      error,
-    );
+ } catch (error) {
+  console.error(
+    'Failed to fetch worlds and challenges:',
+    error,
+  );
 
-    return MOCK_WORLDS;
-  }
+  return [];
+}
 }
 
 export async function getWorldByDomain(
@@ -232,7 +183,7 @@ export async function getWorldByDomain(
 export async function getChallengesByWorld(
   worldId: string,
 ): Promise<Challenge[]> {
-  initializeLocalStorage();
+  
 
   const progress = await getStudentProgress();
 
@@ -259,16 +210,11 @@ export async function getChallengesByWorld(
       },
     );
 
-    if (!response.ok) {
-      console.warn(
-        `Challenge API returned ${response.status}. Using mock challenges.`,
-      );
-
-      return MOCK_CHALLENGES.filter(
-        (challenge) =>
-          challenge.worldId === normalizedWorldId,
-      );
-    }
+  if (!response.ok) {
+  throw new Error(
+    `Challenge API returned ${response.status}`,
+  );
+}
 
     const rawChallenges =
       (await response.json()) as Challenge[];
@@ -294,22 +240,19 @@ export async function getChallengesByWorld(
       };
     });
   } catch (error) {
-    console.warn(
-      'Failed to fetch challenges for world. Using mock challenges:',
-      error,
-    );
+  console.error(
+    'Failed to fetch challenges for world:',
+    error,
+  );
 
-    return MOCK_CHALLENGES.filter(
-      (challenge) =>
-        challenge.worldId === normalizedWorldId,
-    );
-  }
+  return [];
+}
 }
 
 export async function getChallengeById(
   id: string,
 ): Promise<Challenge | undefined> {
-  initializeLocalStorage();
+   
 
   let rawChallenge: Challenge | undefined;
 
@@ -339,10 +282,8 @@ export async function getChallengeById(
   }
 
   if (!rawChallenge) {
-    return MOCK_CHALLENGES.find(
-      (challenge) => challenge.id === id,
-    );
-  }
+  return undefined;
+}
 
   const worldChallenges = await getChallengesByWorld(
     rawChallenge.worldId,
@@ -399,7 +340,7 @@ export async function getStudentApiData(): Promise<StudentApiResponse> {
 export async function getCurrentStudent(): Promise<Student> {
   try {
     const data =
-      await await getStudentApiData();
+       await getStudentApiData();
 
     return {
       id: data.student.id,
@@ -432,7 +373,7 @@ export async function getStudent(): Promise<Student> {
 export async function getStudentProgress(): Promise<StudentProgress> {
   try {
     const data =
-      await await getStudentApiData();
+      await getStudentApiData();
 
     const completedChallengeIds =
       data.progress
@@ -484,15 +425,22 @@ export async function getStudentProgress(): Promise<StudentProgress> {
 
       earnedBadges: [],
     };
-  } catch (error) {
-    console.warn(
-      'Failed to load progress from Airtable. Using temporary fallback:',
-      error,
-    );
+} catch (error) {
+  console.error(
+    'Failed to load progress from Airtable:',
+    error,
+  );
 
-    return MOCK_STUDENT_PROGRESS;
-  }
-}
+  return {
+    studentId: DEFAULT_DEMO_STUDENT.id,
+    completedChallengeIds: [],
+    unlockedWorldIds: [],
+    activeStreak: 0,
+    dailyGoalProgress: 0,
+    dailyGoalMax: 1,
+    earnedBadges: [],
+  };
+}}
 
 /*
 |--------------------------------------------------------------------------
@@ -504,7 +452,7 @@ export async function submitChallengeAnswers(
   challengeId: string,
   answers: Record<string, string>,
 ): Promise<ExerciseAttempt> {
-  initializeLocalStorage();
+   
 
   const challenge =
     await getChallengeById(challengeId);
@@ -519,28 +467,31 @@ export async function submitChallengeAnswers(
    */
   const results = challenge.questions.map(
     (question) => {
-      const studentAnswer = (
-        answers[question.id] || ''
-      ).trim();
+const studentAnswer =
+  answers[question.id] || '';
 
-      const normalizedStudentAnswer =
-        studentAnswer.toLowerCase();
+const normalizedStudentAnswer =
+  normalizeAnswerForQuestion(
+    studentAnswer,
+    question,
+  );
 
-      const acceptedAnswers = [
-        question.correctAnswer,
-        ...(question.acceptedAnswers || []),
-      ]
-        .map((answer) =>
-          String(answer)
-            .trim()
-            .toLowerCase(),
-        )
-        .filter(Boolean);
+const acceptedAnswers = [
+  question.correctAnswer,
+  ...(question.acceptedAnswers || []),
+]
+  .map((answer) =>
+    normalizeAnswerForQuestion(
+      String(answer),
+      question,
+    ),
+  )
+  .filter(Boolean);
 
-      const isCorrect =
-        acceptedAnswers.includes(
-          normalizedStudentAnswer,
-        );
+const isCorrect =
+  acceptedAnswers.includes(
+    normalizedStudentAnswer,
+  );
 
       return {
         questionId: question.id,
@@ -695,13 +646,67 @@ export async function submitChallengeAnswers(
 
 
 
-export function resetProgress(): void {
-  if (typeof window === 'undefined') return;
+ 
 
-  localStorage.removeItem('worlds');
-  localStorage.removeItem('challenges');
-  localStorage.removeItem('student');
-  localStorage.removeItem('student_progress');
 
-  initializeLocalStorage();
+function normalizeAnswerText(value: string): string {
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[−–—]/g, '-')
+    .replace(/[×✕xX]/g, '*')
+    .replace(/÷/g, '/')
+    .replace(/[“”]/g, '"')
+    .replace(/[‘’]/g, "'")
+    .replace(/\s+/g, ' ');
+}
+
+function normalizeCompactAnswer(value: string): string {
+  return normalizeAnswerText(value).replace(
+    /\s*([+\-*/=(),[\]{}])\s*/g,
+    '$1',
+  ).replace(/(\d)\(/g, '$1*(');
+}
+
+function normalizeNumericAnswer(value: string): string {
+  return normalizeCompactAnswer(value)
+    .replace(/,/g, '')
+    .replace(/\.0+$/, '');
+}
+
+function normalizeBooleanAnswer(value: string): string {
+  const normalized = normalizeAnswerText(value);
+
+  if (['true', 't', 'yes', 'y'].includes(normalized)) {
+    return 'true';
+  }
+
+  if (['false', 'f', 'no', 'n'].includes(normalized)) {
+    return 'false';
+  }
+
+  return normalized;
+}
+
+function normalizeAnswerForQuestion(
+  value: string,
+  question: ExerciseQuestion,
+): string {
+  switch (question.type) {
+    case 'numeric':
+    case 'decimal':
+      return normalizeNumericAnswer(value);
+
+    case 'fraction':
+      return normalizeCompactAnswer(value);
+
+    case 'true-false':
+      return normalizeBooleanAnswer(value);
+
+    case 'multiple-choice':
+    case 'short-text':
+    case 'open-ended':
+    default:
+      return normalizeAnswerText(value);
+  }
 }

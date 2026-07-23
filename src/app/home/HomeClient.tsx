@@ -21,7 +21,6 @@ import {
   getStudent,
   getStudentProgress,
   getWorlds,
-  resetProgress,
 } from '../../lib/data';
 
 import {
@@ -235,17 +234,7 @@ export default function HomeClient({
     }
   }
 
-  function handleReset(): void {
-    resetProgress();
-
-    window.dispatchEvent(
-      new Event(
-        'student-progress-updated',
-      ),
-    );
-
-    void fetchHomeData();
-  }
+  
 
   function handleChallengeImageError(
     event: React.SyntheticEvent<
@@ -324,17 +313,7 @@ export default function HomeClient({
                 iconClass="text-tertiary"
               />
 
-              <button
-                type="button"
-                onClick={handleReset}
-                className="flex h-12 w-12 items-center justify-center rounded-2xl border border-error-container/30 bg-error-container/10 text-error transition-colors hover:bg-error-container/20"
-                title="Reset all progress for testing"
-                aria-label="Reset progress"
-              >
-                <span className="material-symbols-outlined">
-                  restart_alt
-                </span>
-              </button>
+              
             </div>
           </div>
         </section>
